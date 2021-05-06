@@ -1,3 +1,4 @@
+uses StrUtils;
 function value(c: char): integer;
 begin
 	value:=-1;
@@ -36,6 +37,11 @@ begin
 	romantoDecimal := res;		
 end;
 
+function decimalToRoman(n: integer):string;
+begin
+	decimalToRoman:=IntToRoman(n);
+end;
+
 
 var 
 	s, s1, s2: string;
@@ -56,6 +62,6 @@ begin
 				s2 := s2 + s[i];
 	end;
 
-	writeln(romanToDecimal(s1) + romanToDecimal(s2));
+	writeln(decimalToRoman(romanToDecimal(s1) + romanToDecimal(s2)));
 end.
 
