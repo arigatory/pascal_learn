@@ -1,4 +1,3 @@
-uses StrUtils;
 function value(c: char): integer;
 begin
 	value:=-1;
@@ -38,8 +37,23 @@ begin
 end;
 
 function decimalToRoman(n: integer):string;
+
+type
+	arr4 = array[0..3] of string;
+	arr9 = array[0..9] of string;
+var 
+	thousands, hundreds,tens,ones:string;
+	m: arr4 = ('','M','MM','MMM');
+	c: arr9 = ('','C','CC','CCC','CD','D','DC','DCC','DCCC','CM');
+	x: arr9 = ('','X','XX','XXX','XL','L','LX','LXX','LXXX','XC');
+	i: arr9 = ('','I','II','III','IV','V','VI','VII','VIII','IX');
 begin
-	decimalToRoman:=IntToRoman(n);
+	thousands := m[n div 1000];
+	hundreds := c[(n mod 1000) div 100];
+	tens := x[(n mod 100) div 10];
+	ones := i[n mod 10];
+
+	decimalToRoman := thousands + hundreds + tens + ones;
 end;
 
 
